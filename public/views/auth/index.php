@@ -44,13 +44,14 @@
                             </div>
                             <div class="card-body">
                                 <form role="form" class="text-start">
-                                    <div class="input-group input-group-outline my-3 focused is-focused">
-                                        <label class="form-label">Correo</label>
-                                        <input type="email" id="correo" class="form-control form-control-lg form-control-solid">
+                                    <div class="input-group input-group-dynamic my-3 mb-4">
+                                        <label class="form-label"><i class="fas fa-envelope"></i> Correo</label>
+                                        <input type="email" pattern="^(?=.*[0-9])$" class="form-control text-center" id="correo" />
                                     </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Contraseña</label>
-                                        <input type="password" id="contra" class="form-control form-control-lg form-control-solid">
+                                    <div class="input-group input-group-dynamic my-3 mb-4">
+                                        <label class="form-label"><i class="fa fa-key"></i> Contraseña</label>
+                                        <input type="password" pattern="[A-Za-z]{3}" class="form-control text-center" id="contra" />
+                                        <span class="input-group-text" style="cursor: pointer;" id="basic-addon2" onclick="mostrarPassword('contra', 'icono-contra')"><i class="fas fa-eye" id="icono-contra"></i></span>
                                     </div>
                                     <div class="text-center">
                                         <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2" onclick="login(event)">Ingresar</button>

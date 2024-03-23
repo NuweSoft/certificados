@@ -72,11 +72,15 @@ class Rol extends Controller
             return;
         }
         $this->data['nombre'] = ucfirst($this->data['nombre']);
-        if ($this->data['id_rol'] === null || $this->data['id_rol'] === "") {
+        $rol = !empty($this->data['id_rol'])
+        ? $this->model->actualizarRol($this->data)
+        : $this->model->registrarRol($this->data['nombre']);
+
+       /*  if ($this->data['id_rol'] === null || $this->data['id_rol'] === "") {
             $rol = $this->model->registrarRol($this->data['nombre']);
         } else {
             $rol = $this->model->actualizarRol($this->data);
-        }
+        } */
         switch ($rol) {
             case "ok":
                 $this->response(Response::estado201(['Rol registrado correctamente.']));
