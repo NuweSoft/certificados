@@ -1,9 +1,11 @@
+
 <script src="<?php echo BASE_URL ?>public/assets/js/jquery.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/popper.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/perfect-scrollbar.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/smooth-scrollbar.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/chartjs.min.js"></script>
+<script src="<?php echo BASE_URL ?>public/assets/js/select2.min.js"></script>
 
 <!-- <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
@@ -263,12 +265,14 @@
   </script>
 <script async defer src="<?php echo BASE_URL ?>public/assets/js/buttons.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/axios.js"></script>
-<script src="<?php echo BASE_URL ?>public/assets/js/dataTables.js"></script>
+<script src="<?php echo BASE_URL ?>public/assets/js/dataTables.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/prism.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/docs.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/holder.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/toastr.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/sweetalert2.min.js"></script>
+<script src="<?php echo BASE_URL ?>public/assets/js/dropzone.min.js"></script>
+
 <script src="<?php echo BASE_URL ?>public/assets/js/material-dashboard.min.js"></script>
 <script>
     const BASE_URL = '<?php echo BASE_URL ?>';

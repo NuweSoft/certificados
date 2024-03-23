@@ -8,13 +8,13 @@
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row justify-content-center m-4">
-                <div class="col-xl-4 mobile-hide mt-8">
+                <div class="col-xl-4 mobile-hide mt-6">
                     <div class="card" data-animation="true">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <a class="d-block blur-shadow-image">
-                                <img src="<?php echo BASE_URL ?>public/assets/img/sistema/rol.png" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                                <img src="<?php echo BASE_URL ?>public/assets/img/sistema/rol.png" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg"  style=" width: 100%; height: 300px;">
                             </a>
-                            <div class="colored-shadow" style="background-image: url(&quot;<?php echo BASE_URL ?>public/assets/img/sistema/rol.png&quot;);"></div>
+                            <div class="colored-shadow" style="background-image: url(&quot;<?php echo BASE_URL ?>public/assets/img/sistema/rol.png&quot;);height: 100%; position: absolute; top: 0px; left: 0px; background-size: cover; "></div>
                         </div>
                         <div class="card-body text-center">
                             <div class="d-flex mt-n6 mx-auto justify-content-center">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-8 col-sm-12 mt-5">
+                <div class="col-xl-8 col-sm-12 mt-4">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-sm-flex justify-content-between">
@@ -52,7 +52,7 @@
                             <div class="table-responsive">
                                 <table class="table align-items-center align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="tbRoles">
                                     <thead>
-                                        <tr-->
+                                        <tr>
                                             <th class="text-Start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nombre</th>
                                             <th class="text-center text-secondary text-uppercase font-weight-bolder text-xxs opacity-7">Acciones</th>

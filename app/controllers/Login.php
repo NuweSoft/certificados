@@ -75,6 +75,7 @@ class login extends Controller
                 $_SESSION['correo'] = $res['data']['correo'];
                 $_SESSION['token'] = $res['data']['token'];
                 $_SESSION['rol'] = $res['data']['rol'];
+                $_SESSION['foto'] = $res['data']['foto'];
                 $_SESSION['estado'] = $res['data']['estado'];
 
                 if ($res['data']['estado'] === 0) {
@@ -90,4 +91,14 @@ class login extends Controller
         }
     }
 
+    public function logout(){
+        if ($this->method !== 'GET') {
+            http_response_code(405);
+            $this->response(Response::estado405());
+            return;
+        }
+        session_destroy();
+        header('Location:'.BASE_URL);
+    
+    }
 }

@@ -38,12 +38,6 @@
             </div>
             <p class="text-sm d-xl-none d-block mt-2">Puede cambiar el tipo de navegación lateral solo en la vista de escritorio.</p>
             <!-- Navbar Fixed -->
-            <div class="mt-3 d-flex">
-                <h6 class="mb-0">Barra de navegación fija</h6>
-                <div class="form-check form-switch ps-0 ms-auto my-auto">
-                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
-                </div>
-            </div>
             <div class="mt-2 d-flex">
                 <h6 class="mb-0">Sidenav Mini</h6>
                 <div class="form-check form-switch ps-0 ms-auto my-auto">
