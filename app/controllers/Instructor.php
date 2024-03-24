@@ -7,13 +7,13 @@ use App\Config\View;
 use App\Config\Response;
 use App\Config\Seguridad;
 use App\Config\Controller;
-use App\Models\UsuarioModel;
+use App\Models\InstructorModel;
 
-class Usuario extends Controller
+class Instructor extends Controller
 {
-
     private $model;
     private static $validar_numero = '/^[0-9]+$/';
+
     public function __construct()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -21,24 +21,24 @@ class Usuario extends Controller
         }
         parent::__construct();
 
-        $this->model = new UsuarioModel();
+        $this->model = new InstructorModel();
     }
+
     public function index()
     {
         if ($this->method !== 'GET') {
-            http_response_code(404);
-            $this->response(Response::estado404());
             return;
         }
+
         $view = new View();
         session_regenerate_id(true);
         if (!empty($_SESSION['activo'])) {
-            echo $view->render('usuario', 'index');
+            echo $view->render('instructor', 'index');
         } else {
             echo $view->render('auth', 'index');
         }
     }
-    public function listarUsuarios()
+    public function listarInstructores()
     {
         if ($this->method !== 'GET') {
             http_response_code(404);
@@ -47,12 +47,12 @@ class Usuario extends Controller
         }
         Seguridad::validateToken($this->header, Seguridad::secretKey());
         try {
-            $this->response($this->model->listarUsuarios());
+            $this->response($this->model->listarInstructores());
         } catch (Exception $e) {
             $this->response(Response::estado500($e->getMessage()));
         }
     }
-    public function registrarUsuario()
+    public function registrarInstructor()
     {
         if ($this->method !== 'POST') {
             http_response_code(404);
@@ -66,15 +66,13 @@ class Usuario extends Controller
             $this->data['apellido'] = $_POST['apellido'];
             $this->data['direccion'] = $_POST['direccion'];
             $this->data['telefono'] = $_POST['telefono'];
-            $this->data['rol_id'] = $_POST['rol_id'];
             $this->data['correo'] = $_POST['correo'];
-            $this->data['contra'] = $_POST['contra'];
-            $this->data['id_usuario'] = $_POST['id_usuario'];
+            $this->data['id_instructor'] = $_POST['id_instructor'];
             $img = isset($_FILES['foto']) ? $_FILES['foto'] : null;
 
             $img_anterior = isset($_POST['imagen_anterior']) ? $_POST['imagen_anterior'] : '';
 
-            $requiredFields = ['ci', 'nombre', 'apellido', 'direccion', 'telefono', 'rol_id'];
+            $requiredFields = ['ci', 'nombre', 'apellido', 'direccion', 'telefono', 'correo'];
             foreach ($requiredFields as $field) {
                 if (empty($this->data[$field])) {
                     $this->response(Response::estado400("El campo $field es requerido"));
@@ -87,25 +85,28 @@ class Usuario extends Controller
             if (!preg_match(self::$validar_numero, $this->data['telefono'])) {
                 $this->response(Response::estado400('El campo telefono solo puede contener números'));
             }
+            if (!filter_var($this->data['correo'], FILTER_VALIDATE_EMAIL)) {
+                $this->response(Response::estado400('El campo correo no es válido'));
+            }
+
             if (!empty($img['name'])) {
                 $nombre_img = uniqid() . '.' . pathinfo($img['name'], PATHINFO_EXTENSION);
-                $destino = 'public/assets/img/usuarios/' . $nombre_img;
+                $destino = 'public/assets/img/instructores/' . $nombre_img;
                 move_uploaded_file($img['tmp_name'], $destino);
-                if (!empty($img_anterior) && $img_anterior != "default.png" && file_exists('public/assets/img/usuarios/' . $img_anterior)) {
-                    unlink('public/assets/img/usuarios/' . $img_anterior);
+                if (!empty($img_anterior) && $img_anterior != "default.png" && file_exists('public/assets/img/instructores/' . $img_anterior)) {
+                    unlink('public/assets/img/instructores/' . $img_anterior);
                 }
             } else {
                 $nombre_img = !empty($img_anterior) ? $img_anterior : "default.png";
             }
-         
-            $this->data['foto'] = $nombre_img;
 
-            $res = !empty($this->data['id_usuario'])
-                ? $this->model->modificarUsuario($this->data)
-                : $this->model->registrarUsuario($this->data);
+            $this->data['foto'] = $nombre_img;
+            $res = !empty($this->data['id_instructor'])
+                ? $this->model->modificarInstructor($this->data)
+                : $this->model->registrarInstructor($this->data);
             switch ($res) {
                 case "ok":
-                    $this->response(Response::estado201(['Rol registrado correctamente.']));
+                    $this->response(Response::estado201(['Instrtuctor registrado correctamente.']));
                     break;
                 case "existe":
                     $this->response(Response::estado409());
@@ -121,7 +122,7 @@ class Usuario extends Controller
             $this->response(Response::estado500($e->getMessage()));
         }
     }
-    public function listarUsuarioId(int $id)
+    public function obtenerInstructor(int $id)
     {
         if ($this->method !== 'GET') {
             http_response_code(404);
@@ -130,12 +131,13 @@ class Usuario extends Controller
         }
         Seguridad::validateToken($this->header, Seguridad::secretKey());
         try {
-            $this->response($this->model->listarUsuarioId($id));
+            $this->response($this->model->obtenerInstructor($id));
         } catch (Exception $e) {
             $this->response(Response::estado500($e->getMessage()));
         }
     }
-    public function eliminarUsuario(int $id){
+    public function eliminarInstructor(int $id)
+    {
         if ($this->method !== 'GET') {
             http_response_code(404);
             $this->response(Response::estado404());
@@ -143,7 +145,7 @@ class Usuario extends Controller
         }
         Seguridad::validateToken($this->header, Seguridad::secretKey());
         try {
-            $rol = $this->model->eliminarUsuario($id);
+            $rol = $this->model->eliminarInstructor($id);
             $this->response(Response::estado200($rol));
         } catch (Exception $e) {
             $this->response(Response::estado500([$e->getMessage()]));

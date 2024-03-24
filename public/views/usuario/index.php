@@ -76,6 +76,7 @@
             <form class="p-3" method="post" action="/file-upload" class="dropzone" id="formUsuario">
                 <div class="modal-body ">
                     <div class="row">
+                    <input type="hidden" id="imagen_anterior">
                         <input type="hidden" id="id_usuario">
                         <div class="col-7">
                             <div class="input-group input-group-dynamic my-3 mb-4">
