@@ -72,7 +72,6 @@ async function login(e) {
     });
 
     const result = await response.json();
-    console.log(result);
     if (result.estado === "ok") {
       toast(
         `Bienvenido ${result.data.nombre} ${result.data.apellido}`,
@@ -85,7 +84,6 @@ async function login(e) {
       toast(result.data, "error");
     }
   } catch (e) {
-    console.log(e);
     toast("Error al iniciar sesión, inténtelo más tarde", "error");
   }
 }

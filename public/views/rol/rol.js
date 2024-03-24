@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Enter") {
       e.preventDefault();
       if (nombre.value === "") {
-        toast("El nombre de la ciudad es requerido", "info");
+        toast("El nombre del rol es requerido", "info");
         nombre.focus();
         return;
       }

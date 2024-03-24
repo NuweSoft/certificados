@@ -18,7 +18,7 @@
                         </div>
                         <div class="card-body text-center">
                             <div class="d-flex mt-n6 mx-auto justify-content-center">
-                                <button class="btn bg-gradient-success btn-sm text-center" onclick="Mrol(event);"><i class="fa fa-plus"></i> Nuevo</button>
+                                <button class="btn bg-gradient-success btn-sm text-center" onclick="Mcategoria(event);"><i class="fa fa-plus"></i> Nuevo</button>
                             </div>
                             <p class="mb-0 mt-3">
                                 El registro de cayegorias es importante para el manejo de los productos.
@@ -35,7 +35,7 @@
                                     <h5 class=" mb-0">Lista categorias</h5>
                                 </div>
                                 <div class="d-flex gap-1">
-                                    <button id="mod" class="btn bg-gradient-secondary btn-sm text-center" onclick="Mrol(event);"><i class="fa fa-plus"></i> Nuevo</button>
+                                    <button id="mod" class="btn bg-gradient-secondary btn-sm text-center" onclick="Mcategoria(event);"><i class="fa fa-plus"></i> Nuevo</button>
                                 </div>
                             </div>
                             <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
@@ -50,7 +50,7 @@
                         </div>
                         <div class="card-body pt-0">
                             <div class="table-responsive">
-                                <table class="table align-items-center align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="tbRoles">
+                                <table class="table align-items-center align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="tbCategorias">
                                     <thead>
                                         <tr>
                                             <th class="text-Start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
@@ -74,4 +74,4 @@
 </body>
 
 </html>
-<!-- <?php require_once 'public/views/categoria/categoriaModal.php'; ?> -->
+<?php require_once 'public/views/categoria/categoriaModal.php'; ?> 

@@ -5,6 +5,7 @@ use Bramus\Router\Router;
 use App\Controllers\Login;
 use App\Controllers\Usuario;
 use App\Controllers\Categoria;
+use App\Controllers\Instructor;
 
 
 
@@ -16,6 +17,7 @@ $home = new Home();
 $rol = new Rol();
 $usuario = new Usuario();
 $categoria = new Categoria();
+$instructor= new Instructor();
 
 
 /*-----------Login-----------*/
@@ -43,11 +45,19 @@ $router->get('usuarioEliminar/(\d+)', [$usuario, 'eliminarUsuario']);
 
 
 
-/*-----------Usuarios-----------*/
+/*-----------Categorias-----------*/
 $router->get('categorias', [$categoria, 'index']);
+$router->get('categoriasListar', [$categoria, 'listarCategorias']);
+$router->post('categoriaRegistrar', [$categoria, 'registrarCategoria']);
+$router->get('categoriaObtener/(\d+)', [$categoria, 'obtenerCategoria']);
+$router->get('categoriaEliminar/(\d+)', [$categoria, 'eliminarCategoria']);
 
-
-
+/*-----------Instructores-----------*/
+$router->get('instructores', [$instructor, 'index']);
+$router->get('instructoresListar', [$instructor, 'listarInstructores']);
+$router->post('instructorRegistrar', [$instructor, 'registrarInstructor']);
+$router->get('instructorObtener/(\d+)', [$instructor, 'obtenerInstructor']);
+$router->get('instructorEliminar/(\d+)', [$instructor, 'eliminarInstructor']);
 
 
 $router->run();

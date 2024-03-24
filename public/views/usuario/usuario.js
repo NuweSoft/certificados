@@ -1,7 +1,6 @@
-let foto = "";
 let tbUsuario;
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("tituloUsuario").innerHTML = "<b>Nuevo Usuario</b>";
+  document.getElementById("page_name").innerHTML = "Usuario";
   listar_usuarios();
   $("#rol_id").select2({
     placeholder: "Seleccionar Rol",
@@ -208,29 +207,27 @@ async function registrar_usuario(e) {
   const rol_id = document.getElementById("rol_id").value;
   const fotoInput = document.getElementById("foto");
   const foto = fotoInput.files[0];
-  if (
-    !ci ||
-    !nombre ||
-    !apellido ||
-    !direccion ||
-    !telefono 
-  ) {
+  const imagen_anterior = document.getElementById("imagen_anterior").value;
+  if (id_usuario === "") {
+    imagen_anterior.value = "";
+  }
+  if (!ci || !nombre || !apellido || !direccion || !telefono) {
     return toast(
       "Por favor, complete todos los campos obligatorios correctamente",
       "info"
     );
   }
-  if(id_usuario==="" && !correo){
+  if (id_usuario === "" && !correo) {
     document.getElementById("correo").focus();
     toast("Por favor, ingrese un correo", "info");
     return;
   }
-  if(id_usuario==="" && !contra){
+  if (id_usuario === "" && !contra) {
     document.getElementById("contra").focus();
     toast("Por favor, ingrese una contraseña", "info");
     return;
   }
-   if(id_usuario==="" && !confirmar){
+  if (id_usuario === "" && !confirmar) {
     document.getElementById("confirmar").focus();
     toast("Por favor, confirme la contraseña", "info");
     return;
@@ -260,9 +257,9 @@ async function registrar_usuario(e) {
   formData.append("correo", correo);
   formData.append("contra", contra);
   formData.append("foto", foto);
-
-  
-  console.log(formData.get("foto"));
+  if (imagen_anterior !== "") {
+    formData.append("imagen_anterior", imagen_anterior);
+  }
 
   const url = `${BASE_URL}usuarioRegistrar`;
   try {
@@ -281,10 +278,10 @@ async function registrar_usuario(e) {
   } catch (error) {
     if (error.response.status === 409) {
       toast("El usuario ingresado ya existe", "info");
-      if(id_usuario !==""){
+      if (id_usuario !== "") {
         document.getElementById("ci").value = "";
         document.getElementById("ci").focus();
-        return
+        return;
       }
       document.getElementById("ci").value = "";
       document.getElementById("nombre").value = "";
@@ -320,7 +317,6 @@ async function modificar_usuario(id_usuario) {
   try {
     const response = await axios.get(url, config);
     const datos = response.data;
-    console.log(datos);
     document.getElementById("id_usuario").value = datos.id_usuario;
     document.getElementById("ci").value = datos.ci;
     document.getElementById("nombre").value = datos.nombre;
@@ -330,6 +326,7 @@ async function modificar_usuario(id_usuario) {
     document.getElementById("correo").value = datos.correo;
     document.getElementById("contra").value = datos.contra;
     document.getElementById("confirmar").value = datos.contra;
+    document.getElementById("imagen_anterior").value = datos.foto;
     $("#rol_id").val(datos.rol_id).trigger("change");
     const wrapper = document.getElementById("imagen");
     if (datos.foto !== "default.png") {
@@ -390,10 +387,7 @@ function Musuario(e) {
     document.getElementById("ci").focus();
   });
 }
-function validar_correo(correo) {
-  const expresion = /\w+@\w+\.+[a-z]/;
-  return expresion.test(correo);
-}
+
 function mostrarPassword(idInput, idIcono) {
   const tipoInput = document.getElementById(idInput).getAttribute("type");
   const icono = document.getElementById(idIcono);
@@ -407,34 +401,4 @@ function mostrarPassword(idInput, idIcono) {
     icono.classList.remove("fa-eye-slash");
     icono.classList.add("fa-eye");
   }
-}
-function preview(event) {
-  const input = event.target;
-  if (!input.files || !input.files[0]) {
-    console.error("No se ha seleccionado ningún archivo");
-    return;
-  }
-
-  const wrapper = document.getElementById("imagen");
-  if (!wrapper) {
-    console.error("No se encontró el elemento con el ID 'imagen'");
-    return;
-  }
-
-  const file = input.files[0];
-  const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById("botonEliminar").hidden = false;
-    wrapper.style.backgroundImage = `url(${reader.result})`;
-    document.getElementById("botonEliminar").style.display = "block";
-  };
-  reader.readAsDataURL(file);
-}
-function deleteImg(button) {
-  const input = button.closest(".fallback").querySelector('input[type="file"]');
-  input.value = "";
-  foto = "";
-  const wrapper = document.getElementById("imagen");
-  wrapper.style.backgroundImage = "none";
-  button.parentNode.style.display = "none";
 }
