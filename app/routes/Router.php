@@ -2,6 +2,7 @@
 use App\Controllers\Rol;
 use App\Controllers\Home;
 use Bramus\Router\Router;
+use App\Controllers\Curso;
 use App\Controllers\Login;
 use App\Controllers\Usuario;
 use App\Controllers\Categoria;
@@ -18,6 +19,7 @@ $rol = new Rol();
 $usuario = new Usuario();
 $categoria = new Categoria();
 $instructor= new Instructor();
+$curso = new Curso();
 
 
 /*-----------Login-----------*/
@@ -27,7 +29,6 @@ $router->get('logout', [$login, 'logout']);
 
 /*-----------home-----------*/
 $router->get('home', [$home, 'index']);
-
 
 /*-----------Roles-----------*/
 $router->get('roles', [$rol, 'index']);
@@ -43,8 +44,6 @@ $router->post('usuarioRegistrar', [$usuario, 'registrarUsuario']);
 $router->get('usuarioListarId/(\d+)', [$usuario, 'listarUsuarioId']);
 $router->get('usuarioEliminar/(\d+)', [$usuario, 'eliminarUsuario']);
 
-
-
 /*-----------Categorias-----------*/
 $router->get('categorias', [$categoria, 'index']);
 $router->get('categoriasListar', [$categoria, 'listarCategorias']);
@@ -59,5 +58,11 @@ $router->post('instructorRegistrar', [$instructor, 'registrarInstructor']);
 $router->get('instructorObtener/(\d+)', [$instructor, 'obtenerInstructor']);
 $router->get('instructorEliminar/(\d+)', [$instructor, 'eliminarInstructor']);
 
+/*-----------Cursos-----------*/
+$router->get('cursos', [$curso, 'index']);
+$router->get('cursosListar', [$curso, 'listarCursos']);
+$router->post('cursoRegistrar', [$curso, 'registrarCurso']);
+$router->get('cursoObtener/(\d+)', [$curso, 'obtenerCurso']);
+$router->get('cursoEliminar/(\d+)', [$curso, 'eliminarCurso']);
 
 $router->run();
