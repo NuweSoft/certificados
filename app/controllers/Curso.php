@@ -160,4 +160,5 @@ class Curso extends Controller
             $this->response(Response::estado500($e->getMessage()));
         }
     }
+    
 }

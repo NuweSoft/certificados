@@ -76,7 +76,7 @@
             <form class="p-3" method="post" action="/file-upload" class="dropzone" id="formUsuario">
                 <div class="modal-body ">
                     <div class="row">
-                    <input type="hidden" id="imagen_anterior">
+                        <input type="hidden" id="imagen_anterior">
                         <input type="hidden" id="id_usuario">
                         <div class="col-7">
                             <div class="input-group input-group-dynamic my-3 mb-4">
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-5 mt-7">
-                        <input type="hidden" id="imagen_actual" value="default.png">
+                            <input type="hidden" id="imagen_actual" value="default.png">
                             <small class="text-gray-700 d-block text-center m-1"><b>Foto</b></small>
                             <div class="fallback">
                                 <label for="foto" class="bg-body shadow" style="cursor: pointer;">
@@ -109,7 +109,7 @@
                                     <div id="imagen" style="width: 150px; height: 150px; background-size: cover; background-position: center; border: 2px solid #ccc; border-radius: 10px;"></div>
                                 </label>
                                 <div class="text-center" id="botonEliminar" style="display: none;">
-                                    <button  class="btn btn-icon btn-2 btn-primary" type="button" onclick="deleteImg(this)">
+                                    <button class="btn btn-icon btn-2 btn-primary" type="button" onclick="deleteImg(this)">
                                         <span class="btn-inner--icon"><i class="fa-solid fa-trash"></i></span>
                                     </button>
                                 </div>

@@ -76,7 +76,6 @@
                 <div class="modal-body ">
                     <div class="row">
                         <input type="hidden" id="id_curso">
-
                         <div class="col-7">
                             <div class="input-group input-group-dynamic my-3 mt-5 mb-4">
                                 <label class="form-label"><i class="fas fa-user"></i> Nombre</label>
@@ -92,7 +91,6 @@
                                 <input type="date" class="form-control text-center" id="fecha_fin" />
                             </div>
                         </div>
-
                         <div class="col-5 mt-5">
                             <input type="hidden" id="imagen_anterior">
                             <input type="hidden" id="imagen_actual" value="default.png">
@@ -116,12 +114,13 @@
                             </div>
                         </div>
                         <label for="categoria_id" class="form-label ms-0"><i class="fas fa-boxes"></i> Categoria</label>
-                            <div class="input-group input-group-solid flex-nowrap mb-4">
-                                <div class="overflow-hidden flex-grow-1">
-                                    <select class="form-select form-select-sm text-center" aria-label="form-select-sm example" id="categoria_id">
-                                    </select>
-                                </div>
+                        <div class="input-group input-group-solid flex-nowrap mb-4">
+                            <div class="overflow-hidden flex-grow-1">
+                                <select class="form-select form-select-sm text-center" aria-label="form-select-sm example" id="categoria_id">
+                                </select>
                             </div>
+                        </div>
+
                         <label for="instructor_id" class="form-label ms-0"><i class="fa-solid fa-chalkboard-user"></i> Instructor(es) </label>
                         <div class="input-group input-group-solid flex-nowrap mb-4">
                             <div class="overflow-hidden flex-grow-1">
@@ -134,7 +133,66 @@
                         <div class="col-6 text-center"><button type="button" class="btn bg-gradient-danger btn-sm" data-bs-dismiss="modal">Cancelar</button></div>
                         <div class="col-6 text-center"><button type="button" class="btn bg-gradient-success btn-sm" onclick="registrar_curso(event)">Guardar</button></div>
                     </div>
+                </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true" id="ModalVerCurso">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center bg-gradient-secondary">
+                <h6 class="modal-title font-weight-normal text-white"><b>Detalles del curso</b></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <nav class="flex min-w-0">
+                        <p class="text-blue-400 dark:!text-blue-600 mb-2 truncate text-neutral-text text-mobile-small lg:text-desktop-small italic">
+                            <i class="fa-solid fa-cube"></i>
+                            <span>
+                                <span>
+                                    <a href="<?php echo BASE_URL ?>cursos" class="hover:underline"><b>Cursos &gt;</b></a>
+                                </span>
+                                <span class="text-neutral-text" id="curso"></span>
+                            </span>
+                        </p>
+                    </nav>
+                    <div class="col col-5 mt-3">
+                        <div class="row">
+                            <h4 id="categoria_nombre" class="h5 text-neutral-title mb-2"></h4>
+                            <p id="descripcion_curso" class="text-desktop-normal mb-4 text-neutral-text"></p>
+                            <div class="text-desktop-small mb-6">
+                                <p class="font-semibold text-neutral-text"><b>Instructor(es)</b></p>
+                                <ul class="text-neutral-text-light text-mobile-small md:text-desktop-small" id="instructor"></ul>
+                            </div>
+                            <div class="flex gap-5 gap-y-1 flex-wrap">
+                                <span id="inicio" class="text-neutral-text text-mobile-small"></span><br>
+                                <span id="fin" class="text-neutral-text text-mobile-small"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-7 mt-5">
+                        <div class="order-1 lg:order-2 lg:col-span-4">
+                            <div class="course-preview_preview__bnObo relative aspect-video lg:rounded-lg overflow-hidden">
+                                <div class="course-preview_poster__6VwxY absolute h-full w-full duration-200">
+                                    <div class="flex items-center justify-center absolute animate-pulse bg-neutral-border w-full h-full aspect-video">
+                                        <img id="imagen_curso" loading="lazy" width="100%" height="350px" decoding="async" data-nimg="1" class="relative w-full h-full transition-all duration-200" style="color: transparent; border-radius: 10px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center mt-4">
+                    <div class="text-center">
+                        <button type="button" class="btn bg-gradient-success btn-sm" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

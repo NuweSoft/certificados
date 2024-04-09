@@ -274,6 +274,7 @@
 <script src="<?php echo BASE_URL ?>public/assets/js/dropzone.min.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/moment.js"></script>
 <script src="<?php echo BASE_URL ?>public/assets/js/material-dashboard.min.js"></script>
+
 <script>
     const BASE_URL = '<?php echo BASE_URL ?>';
 </script>

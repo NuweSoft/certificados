@@ -39,11 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
         fecha_ini.focus();
         return;
       }
-      if(fecha_ini.value < moment().format("YYYY-MM-DD")){
-        toast("La fecha de inicio no puede ser menor a la fecha actual", "info");
+      if (fecha_ini.value < moment().format("YYYY-MM-DD")) {
+        toast(
+          "La fecha de inicio no puede ser menor a la fecha actual",
+          "info"
+        );
         fecha_ini.focus();
         return;
-
       }
       fecha_fin.focus();
     }
@@ -78,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       descripcion.value = capitalizarPalabras(descripcion.value);
       categoria_id.focus();
     }
-  })
+  });
   categoria_id.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -87,9 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
         categoria_id.focus();
         return;
       }
-     registrar_curso(e)
+      registrar_curso(e);
     }
-  })
+  });
 });
 async function registrar_curso(e) {
   e.preventDefault();
@@ -98,13 +100,13 @@ async function registrar_curso(e) {
   const descripcion = document.getElementById("descripcion").value;
   const categoria_id = document.getElementById("categoria_id").value;
   const instructor_id = $("#instructor_id").val();
-  const fecha_ini =document.getElementById("fecha_ini").value
+  const fecha_ini = document.getElementById("fecha_ini").value;
   const fecha_fin = document.getElementById("fecha_fin").value;
   const fotoInput = document.getElementById("foto");
   const foto = fotoInput.files[0];
   const imagen_anterior = document.getElementById("imagen_anterior").value;
 
-  console.log(categoria_id)
+  console.log(categoria_id);
   if (nombre === "") {
     toast("El nombre del curso es obligatorio", "info");
     document.getElementById("nombre_curso").focus();
@@ -117,7 +119,7 @@ async function registrar_curso(e) {
     return;
   }
   // biome-ignore lint/suspicious/noDoubleEquals: <explanation>
-if  (categoria_id == 0) {
+  if (categoria_id == 0) {
     toast("La categoria del curso es obligatoria", "info");
     return;
   }
@@ -131,12 +133,12 @@ if  (categoria_id == 0) {
     document.getElementById("fecha_fin").focus();
     return;
   }
-  if(fecha_ini < moment().format("YYYY-MM-DD")){
+  if (fecha_ini < moment().format("YYYY-MM-DD")) {
     toast("La fecha de inicio no puede ser menor a la fecha actual", "info");
     document.getElementById("fecha_ini").focus();
     return;
   }
-  if(fecha_fin < fecha_ini){
+  if (fecha_fin < fecha_ini) {
     toast("La fecha de fin no puede ser menor a la fecha de inicio", "info");
     document.getElementById("fecha_fin").focus();
     return;
@@ -202,9 +204,9 @@ async function listar_cursos() {
         {
           data: null,
           render: (data, type, row, meta) => {
-            const palabras = row.descripcion.split(" ").slice(0, 15).join(" ");
+            const palabras = row.descripcion.split(" ").slice(0, 8).join(" ");
             return `${
-              palabras + (row.descripcion.split(" ").length > 15 ? "..." : "")
+              palabras + (row.descripcion.split(" ").length > 8 ? "..." : "")
             }<br>`;
           },
         },
@@ -224,8 +226,8 @@ async function listar_cursos() {
         {
           data: null,
           render: (data, type, row) => {
-            if(row.nombres_instructores==="Sin instructor"){
-              return   `<span class="badge badge-pill bg-gradient-danger">${row.nombres_instructores}</span>`
+            if (row.nombres_instructores === "Sin instructor") {
+              return `<span class="badge badge-pill bg-gradient-danger">${row.nombres_instructores}</span>`;
             }
             const nombres = row.nombres_instructores.split(",");
             const apellidos = row.apellidos_instructores.split(",");
@@ -327,7 +329,6 @@ async function eliminar_curso(id) {
   }
 }
 async function modificar_curso(id) {
- console.log(id)
   const url = `${BASE_URL}cursoObtener/${id}`;
   try {
     const response = await axios.get(url, config);
@@ -362,3 +363,38 @@ async function modificar_curso(id) {
     console.error(error);
   }
 }
+async function ver_curso(id) {
+  const url = `${BASE_URL}cursoObtener/${id}`;
+  try {
+    const response = await axios.get(url, config);
+    const datos = response.data;
+    console.log(datos);
+    document.getElementById("curso").innerHTML = `<b>${datos[0].nombre}</b>`;
+    document.getElementById(
+      "categoria_nombre"
+    ).innerHTML = `${datos[0].categoria}: ${datos[0].nombre}`;
+    document.getElementById(
+      "descripcion_curso"
+    ).innerHTML = `${datos[0].descripcion}`;
+    let instructoresHTML = "";
+    for (const curso of datos) {
+      instructoresHTML += `<li class="list-group-item justify-content-between align-items-center mb-2"><img src="${BASE_URL}public/assets/img/instructores/${curso.foto_instructor}" class="img-fluid img-thumbnail" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"/>  ${curso.nombre_intructor} ${curso.apellido}</li>`;
+    }
+    document.getElementById("instructor").innerHTML = instructoresHTML;
+    document.getElementById(
+      "inicio"
+    ).innerHTML = `<i class="fas fa-calendar-alt"></i> Inicio: ${moment(
+      datos[0].fecha_ini
+    ).format("DD/MM/YYYY")}`;
+    document.getElementById(
+      "fin"
+    ).innerHTML = `<i class="fas fa-calendar-alt"></i> Fin: ${moment(
+      datos[0].fecha_fin
+    ).format("DD/MM/YYYY")}`;
+    document.getElementById(
+      "imagen_curso"
+    ).src = `${BASE_URL}public/assets/img/cursos/${datos[0].foto}`;
+  } catch (error) {}
+  $("#ModalVerCurso").modal("show");
+}
+

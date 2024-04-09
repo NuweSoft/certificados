@@ -6,7 +6,10 @@ use App\Controllers\Curso;
 use App\Controllers\Login;
 use App\Controllers\Usuario;
 use App\Controllers\Categoria;
+use App\Controllers\Dashboard;
 use App\Controllers\Instructor;
+use App\Controllers\Certificado;
+use App\Controllers\CursoUsuario;
 
 
 
@@ -20,10 +23,13 @@ $usuario = new Usuario();
 $categoria = new Categoria();
 $instructor= new Instructor();
 $curso = new Curso();
+$certificado = new Certificado();
+$curso_usuario= new CursoUsuario();
+$dashboard= new Dashboard();
 
 
 /*-----------Login-----------*/
-$router->get('/', [$login, 'index']);
+$router->get('login', [$login, 'index']);
 $router->post('login', [$login, 'login']);
 $router->get('logout', [$login, 'logout']);
 
@@ -59,10 +65,27 @@ $router->get('instructorObtener/(\d+)', [$instructor, 'obtenerInstructor']);
 $router->get('instructorEliminar/(\d+)', [$instructor, 'eliminarInstructor']);
 
 /*-----------Cursos-----------*/
-$router->get('cursos', [$curso, 'index']);
+$router->get('curso', [$curso, 'index']);
 $router->get('cursosListar', [$curso, 'listarCursos']);
 $router->post('cursoRegistrar', [$curso, 'registrarCurso']);
 $router->get('cursoObtener/(\d+)', [$curso, 'obtenerCurso']);
 $router->get('cursoEliminar/(\d+)', [$curso, 'eliminarCurso']);
+
+/*-----------Sub categorias-----------*/
+/* $router->get('sub_categorias', [$sub_categoria, 'index']);
+$router->get('sub_categoriasListar', [$sub_categoria, 'listarSub_categorias']);
+$router->post('sub_categoriaRegistrar', [$sub_categoria, 'registrarSub_categoria']);
+$router->get('sub_categoriaObtener/(\d+)', [$sub_categoria, 'obtenerSub_categoria']);
+$router->get('sub_categoriaEliminar/(\d+)', [$sub_categoria, 'eliminarSub_categoria']);
+ */
+
+ /* -----------Certificado-----------*/
+  $router->get('certificados', [$certificado, 'index']);
+
+   /* -----------CursosUsuarios-----------*/
+   $router->get('/', [$dashboard, 'index']);
+   $router->get('cursosNuevos', [$dashboard, 'listarCursosNuevos']);
+   $router->get('cursosLista', [$dashboard, 'listarCursos']);
+   $router->get('curso/(\d+)/([a-zA-Z0-9]+)', [$dashboard, 'cursoId']);
 
 $router->run();

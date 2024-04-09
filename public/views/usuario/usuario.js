@@ -133,6 +133,7 @@ async function listar_roles() {
   try {
     const response = await axios.get(url, config);
     const datos = response.data.data;
+    console.log(datos);
     const select = document.getElementById("rol_id");
     for (let i = 0; i < datos.length; i++) {
       const rol = datos[i];
