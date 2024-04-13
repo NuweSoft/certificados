@@ -16,7 +16,7 @@
                                 <h5 class=" mb-0">Lista instructores</h5>
                             </div>
                             <div class="d-flex gap-1">
-                                <button class="btn btn-outline-dark bg-gradient-dark  btn-sm text-center hover-scale hover-shadow " onclick="Minstructor(event);" ><i class="fa fa-plus"></i> Nuevo</button>
+                                <button class="btn btn-outline-dark bg-gradient-dark  btn-sm text-center hover-scale hover-shadow" onclick="Minstructor(event);" ><i class="fa fa-plus"></i> Nuevo</button>
                             </div>
                         </div>
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5 mt-4">
@@ -33,15 +33,15 @@
                         <div class="table-responsive">
                             <table class="table align-items-center align-middle table-row-dashed fs-6 gy-5 responsive nowrap" id="tbInstructor" style="width: 100%; font-size: 12px; font-family: 'Poppins', sans-serif; font-weight: 400 !important; ">
                                 <thead>
-                                    <tr class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <tr>
                                         <th>#</th>
-                                        <th class="ps-2">Foto</th>
-                                        <th class="ps-2">ci</th>
-                                        <th class="text-center d-none d-md-table-cell">nombre(s)</th>
-                                        <th class="text-center d-none d-md-table-cell">apellido(s)</th>
-                                        <th class="text-center d-none d-md-table-cell">direccion</th>
-                                        <th class="text-center d-none d-md-table-cell">telefono</th>
-                                        <th class="text-center">Acciones</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Foto</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ci</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">nombre(s)</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">apellido(s)</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">direccion</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">telefono</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center fw-semibold text-gray-600"></tbody>

@@ -42,6 +42,22 @@
           <span class="nav-link-text ms-1"><b>Categorias</b></span>
         </a>
       </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white " href="<?php echo BASE_URL ?>curso">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="fa-solid fa-table-list"></i>
+          </div>
+          <span class="nav-link-text ms-1"><b>Cursos</b></span>
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white " href="<?php echo BASE_URL ?>certificados">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="fa-solid fa-address-card"></i>
+          </div>
+          <span class="nav-link-text ms-1"><b>Certificados</b></span>
+        </a>
+      </li>
       <li class="nav-item">
         <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link text-white collapsed" aria-controls="ecommerceExamples" role="button" aria-expanded="false">
           <i class="fa-solid fa-screwdriver-wrench"></i>

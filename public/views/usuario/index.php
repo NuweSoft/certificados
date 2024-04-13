@@ -16,7 +16,7 @@
                                 <h5 class=" mb-0">Lista usuarios</h5>
                             </div>
                             <div class="d-flex gap-1">
-                                <button class="btn bg-gradient-secondary btn-sm text-center hover-scale" onclick="Musuario(event);"><i class="fa fa-plus"></i> Nuevo</button>
+                                <button class="btn btn-outline-dark bg-gradient-dark  btn-sm text-center hover-scale hover-shadow" onclick="Musuario(event);"><i class="fa fa-plus"></i> Nuevo</button>
                             </div>
                         </div>
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5 mt-4">
@@ -33,16 +33,16 @@
                         <div class="table-responsive">
                             <table class="table align-items-center align-middle table-row-dashed fs-6 gy-5 responsive nowrap" id="tbUsuario" style="width: 100%; font-size: 12px; font-family: 'Poppins', sans-serif; font-weight: 400 !important; ">
                                 <thead>
-                                    <tr class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <tr>
                                         <th>#</th>
-                                        <th class="ps-2">Foto</th>
-                                        <th class="ps-2">ci</th>
-                                        <th class="text-center d-none d-md-table-cell">nombre(s)</th>
-                                        <th class="text-center d-none d-md-table-cell">apellido(s)</th>
-                                        <th class="text-center d-none d-md-table-cell">direccion</th>
-                                        <th class="text-center d-none d-md-table-cell">telefono</th>
-                                        <th class="text-center">rol</th>
-                                        <th class="text-center">Acciones</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Foto</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ci</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">nombre(s)</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">apellido(s)</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">direccion</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center d-none d-md-table-cell">telefono</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">rol</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center fw-semibold text-gray-600"></tbody>
@@ -76,7 +76,7 @@
             <form class="p-3" method="post" action="/file-upload" class="dropzone" id="formUsuario">
                 <div class="modal-body ">
                     <div class="row">
-                    <input type="hidden" id="imagen_anterior">
+                        <input type="hidden" id="imagen_anterior">
                         <input type="hidden" id="id_usuario">
                         <div class="col-7">
                             <div class="input-group input-group-dynamic my-3 mb-4">
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-5 mt-7">
-                        <input type="hidden" id="imagen_actual" value="default.png">
+                            <input type="hidden" id="imagen_actual" value="default.png">
                             <small class="text-gray-700 d-block text-center m-1"><b>Foto</b></small>
                             <div class="fallback">
                                 <label for="foto" class="bg-body shadow" style="cursor: pointer;">
@@ -109,7 +109,7 @@
                                     <div id="imagen" style="width: 150px; height: 150px; background-size: cover; background-position: center; border: 2px solid #ccc; border-radius: 10px;"></div>
                                 </label>
                                 <div class="text-center" id="botonEliminar" style="display: none;">
-                                    <button  class="btn btn-icon btn-2 btn-primary" type="button" onclick="deleteImg(this)">
+                                    <button class="btn btn-icon btn-2 btn-primary" type="button" onclick="deleteImg(this)">
                                         <span class="btn-inner--icon"><i class="fa-solid fa-trash"></i></span>
                                     </button>
                                 </div>
