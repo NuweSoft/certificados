@@ -14,7 +14,7 @@ async function listar_cursos_nuevos() {
         const cursoId = data[i].id_curso;
         const imgUrl = `${BASE_URL}public/assets/img/cursos/${data[i].foto_curso}`;
         document.getElementById(`curso${i + 1}`).innerHTML = `
-          <a href="${BASE_URL}curso/${cursoId}/${cursoNombre}">
+          <a href="${BASE_URL}curso/${cursoNombre}">
             <img class="w-100 border-radius-xl grayscale-img" src="${imgUrl}" loading="lazy" alt="signupcover">
           </a>`;
       }
@@ -48,7 +48,7 @@ async function listar_cursos() {
       buttonElement.addEventListener("click", () => {
         const cursoId = curso.id_curso;
         const cursoNombre = curso.curso;
-        window.location.href = `${BASE_URL}curso/${cursoId}/${cursoNombre}`;
+        window.location.href = `${BASE_URL}curso/${cursoNombre}`;
       });
     }
   } catch (error) {

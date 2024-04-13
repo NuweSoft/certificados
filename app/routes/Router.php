@@ -86,6 +86,6 @@ $router->get('sub_categoriaEliminar/(\d+)', [$sub_categoria, 'eliminarSub_catego
    $router->get('/', [$dashboard, 'index']);
    $router->get('cursosNuevos', [$dashboard, 'listarCursosNuevos']);
    $router->get('cursosLista', [$dashboard, 'listarCursos']);
-   $router->get('curso/(\d+)/([a-zA-Z0-9]+)', [$dashboard, 'cursoId']);
+   $router->get('curso/([a-zA-Z0-9]+)', [$dashboard, 'cursoId']);
 
 $router->run();

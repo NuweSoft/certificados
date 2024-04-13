@@ -41,27 +41,21 @@
                     <div class="relative aspect-video">
                         <div class="card">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 ">
-                                <a class="d-block">
+                                <a class="d-block" id="img_curso">
                                     <img src="<?php echo BASE_URL ?>public/assets/img/sistema/categoria.png" class="img-fluid shadow border-radius-lg" style="height: 350px; width: 100%;">
                                 </a>
-
                             </div>
                             <div class="card-body text-center">
-                                <div class="avatar avatar-lg position-relative mt-n6 mx-auto z-index-2">
-                                    <img src="http://via.placeholder.com/64x64" class="rounded-circle m-1" alt="">
-                                    <img src="http://via.placeholder.com/64x64" class="rounded-circle m-1" alt="">
-                                    <img src="http://via.placeholder.com/64x64" class="rounded-circle m-1" alt="">
+                                <div id="img_instructor" class="avatar avatar-lg position-relative mt-n6 mx-auto z-index-2">
+                                    <img  src="http://via.placeholder.com/64x64" class="rounded-circle m-1" alt="">
                                 </div>
                                 <h5 class="font-weight-normal mt-1">
                                     Desarrollo de videojuegos
                                 </h5>
-
                                 <button class="col-12 btn btn-lg btn-block bg-gradient-primary mt-2">
                                     <span class="text-animation"><b>Inscribirme gratis</b></span>
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
-
-
                             </div>
                         </div>
 

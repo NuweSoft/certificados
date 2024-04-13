@@ -108,6 +108,3 @@ async function eliminar_categoria(id) {
     }
   }
 }
-
-
-  

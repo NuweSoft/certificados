@@ -4,10 +4,10 @@
   --gap: 1rem;
 }
 .move-on-hover:hover {
-  transform: scale(1.35);
+  transform: scale(1.08);
   z-index: 333;
-  transition: 1s;
-  box-shadow: #0000004d 0px 1.9vmin 3.8vmin, #0004 0 1.5vmin 1.2vmin;
+  transition: 0.6s; 
+
 }
 .grayscale-img {
   height: 150px;
@@ -40,24 +40,28 @@
 }
 .wrappers {
   position: relative;
-  width: 80%;
+  padding-top: 10px;
+  width:95%;
   height: 200px;
   overflow: hidden;
-  border-radius: 8px;
 }
 .contenedors {
   display: flex;
-  width: fit-content;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   animation: roll 20s linear infinite;
   gap: var(--gap);
 }
 .tags {
-  padding: 0.8rem 0.8rem;
-  border-radius: 0.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  font-weight: 600;
-  height: 180px;
-  width: auto;
+  border-radius: 15px;
+  border:none;
+  padding: none;
+  width: 250px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .drake {
   width: 250px;
@@ -68,7 +72,8 @@
   transform: scale(1.1);
   transition: 1s;
   z-index: 333;
-  box-shadow: #0000004d 0px 1.9vmin 3.8vmin, #0004 0 1.5vmin 1.2vmin;
+  animation-fill-mode: forwards;
+
 }
 .blurs {
   position: relative;
